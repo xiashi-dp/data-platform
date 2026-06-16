@@ -4,7 +4,6 @@
       <nav>
         <el-menu mode="horizontal" router>
           <el-menu-item index="/report">📊 运营报表</el-menu-item>
-          <el-menu-item index="/video">📺 视频分析</el-menu-item>
           <div style="float: right; line-height: 60px; margin-right: 20px; cursor: pointer; color: #409eff" @click="logout">
             退出登录
           </div>

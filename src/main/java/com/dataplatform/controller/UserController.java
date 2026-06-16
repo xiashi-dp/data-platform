@@ -5,11 +5,13 @@ import com.dataplatform.common.JwtUtil;
 import com.dataplatform.common.Result;
 import com.dataplatform.model.User;
 import com.dataplatform.service.UserService;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.web.bind.annotation.*;
 
+@Tag(name = "用户管理", description = "用户登录、查询等接口")
 @RestController
 @RequestMapping("/api/user")
-
 public class UserController {
     private final UserService userService;
 
@@ -17,6 +19,7 @@ public class UserController {
         this.userService = userService;
     }
 
+    @Operation(summary = "根据ID查询用户")
     @GetMapping("/{id}")
     public Result<User> getUserById(@PathVariable Long id) {
         User user = userService.findById(id);
@@ -26,6 +29,7 @@ public class UserController {
         return Result.success(user);
     }
 
+    @Operation(summary = "用户登录", description = "用户名密码登录，返回 JWT Token")
     @PostMapping("/login")
     public Result<String> login(@RequestParam String username,
                                 @RequestParam String password) {

@@ -1,11 +1,13 @@
 package com.dataplatform.model;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 
 /**
  * 运营报表 —— 对应 Hive/Spark 处理后写入 MySQL 的日聚合数据
  */
-public class OperationReport {
+public class OperationReport implements Serializable {
+    private static final long serialVersionUID = 1L;
     private Long id;
     private LocalDate reportDate;        // 数据日期
     private Long newUserCount;           // 新增用户数
